@@ -1,5 +1,6 @@
 package com.example.flori.groupea07_mobile.Model;
 
+import java.net.Authenticator;
 import java.util.List;
 import android.util.Log;
 import com.google.gson.Gson;
@@ -24,12 +25,11 @@ public class AuctionedObjectManager implements Callback{
         return instance;
     }
 
-    public void loadMerchs(Callback callback)
+    public void loadAuctioned_objectList(Callback callback)
     {
         this.callback = callback;
-
         GenericDAO dao = new GenericDAO(instance);
-        dao.execute("auctioned_object",HttpRequestType.GET.toString(),"");
+        dao.execute("auctioned_object",HttpRequestType.GET.tostring(),"");
     }
 
     @Override

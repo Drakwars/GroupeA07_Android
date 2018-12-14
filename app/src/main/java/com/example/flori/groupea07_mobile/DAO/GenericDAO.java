@@ -41,6 +41,17 @@ public class GenericDAO extends AsyncTask<String, Void, String>{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        try
+        {
+            return httpQuery(type,obj);
+        }
+        catch (IOException e)
+        {
+            return "Unable to retrieve web page. URL may be invalid.";
+        } catch (JSONException e) {
+            return "The json object is invalid.";
+        }
+
 
     }
 
@@ -58,7 +69,7 @@ public class GenericDAO extends AsyncTask<String, Void, String>{
         callback.onPostExecute(result);
     }
 
-    private String httpQuery(String type,JSONObject obj,boolean requireToken) throws IOException, JSONException {
+    private String httpQuery(String type,JSONObject obj) throws IOException, JSONException {
         URL url = new URL(base_url+spec_url);
 
         // 1. create HttpURLConnection

@@ -36,7 +36,7 @@ public class SellerUser {
 
     public int getNegativeVote(){ return negativeVote;}
 
-    public void setNegativeVote(int nVote){ negativeVote = nVote};
+    public void setNegativeVote(int nVote){ negativeVote = nVote;}
 
     public int getIdUser(){ return idUser;}
 

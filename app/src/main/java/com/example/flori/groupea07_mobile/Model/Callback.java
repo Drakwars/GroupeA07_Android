@@ -7,5 +7,5 @@ public interface Callback {
         void onPostExecute(String result);
 
         void onManagerLoaded(String manager);
-    }
-}
+   }
+
