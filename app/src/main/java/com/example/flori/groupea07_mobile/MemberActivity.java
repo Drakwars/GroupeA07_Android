@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.example.flori.groupea07_mobile.Model.Member;
 import com.example.flori.groupea07_mobile.Model.RetrofitInstance;
-import com.example.flori.groupea07_mobile.Service.GetMemberDataService;
+import com.example.flori.groupea07_mobile.Service.GetDataService;
 import com.example.flori.groupea07_mobile.Service.MemberListAdapter;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class MemberActivity extends AppCompatActivity {
 
 
         /** Create handle for the RetrofitInstance interface*/
-        GetMemberDataService service = RetrofitInstance.getRetrofitInstance().create(GetMemberDataService.class);
+        GetDataService service = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
 
         /** Call the method with parameter in the interface to get the notice data*/
         Call<List<Member>> call = service.groupList();
@@ -51,20 +51,6 @@ public class MemberActivity extends AppCompatActivity {
             public void onFailure(Call<List<Member>> call, Throwable t) {
                 Log.wtf("parser", t.getLocalizedMessage());
                 Toast.makeText(MemberActivity.this, "Something went wrong...Error message: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Call<Member> call2 = service.getMemberById(15);
-
-        call2.enqueue(new Callback<Member>() {
-            @Override
-            public void onResponse(Call<Member> call, Response<Member> response) {
-                Log.wtf("parser", "2 eme call : "+response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<Member> call, Throwable t) {
-                Log.wtf("parser", "2 eme call error: "+t.getMessage());
             }
         });
     }

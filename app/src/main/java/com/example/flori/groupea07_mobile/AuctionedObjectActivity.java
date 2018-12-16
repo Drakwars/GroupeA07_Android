@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.flori.groupea07_mobile.Model.AuctionedObject;
 import com.example.flori.groupea07_mobile.Model.RetrofitInstance;
 import com.example.flori.groupea07_mobile.Service.AuctionedObjectListAdapter;
-import com.example.flori.groupea07_mobile.Service.GetMemberDataService;
+import com.example.flori.groupea07_mobile.Service.GetDataService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class AuctionedObjectActivity extends AppCompatActivity {
 
 
         /** Create handle for the RetrofitInstance interface*/
-        GetMemberDataService service = RetrofitInstance.getRetrofitInstance().create(GetMemberDataService.class);
+        GetDataService service = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
 
         /** Call the method with parameter in the interface to get the notice data*/
         Call<List<AuctionedObject>> call = service.groupObjectList();

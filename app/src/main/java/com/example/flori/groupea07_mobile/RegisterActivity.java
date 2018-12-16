@@ -17,6 +17,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,9 +27,18 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.flori.groupea07_mobile.Model.Member;
+import com.example.flori.groupea07_mobile.Model.RetrofitInstance;
+import com.example.flori.groupea07_mobile.Service.GetDataService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -57,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText mUsername;
     private View mProgressView;
     private View mLoginFormView;
 
@@ -69,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
+        mUsername = (EditText) findViewById(R.id.username);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -91,6 +103,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
+
+        //toolbar
         Toolbar toolBar = (Toolbar) findViewById(R.id.register_tool_bar);
         toolBar.setTitle(getResources().getText(R.string.txt_register));
         toolBar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
@@ -149,11 +163,11 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
-
+        mUsername.setError(null);
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-
+        String username = mUsername.getText().toString();
         boolean cancel = false;
         View focusView = null;
 
@@ -177,13 +191,13 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
-            // form field with an error.
+            // form field with an error
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(email, password, username);
             mAuthTask.execute((Void) null);
         }
     }
@@ -296,10 +310,12 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
 
         private final String mEmail;
         private final String mPassword;
+        private final String mUsername;
 
-        UserLoginTask(String email, String password) {
+        UserLoginTask(String email, String password, String username) {
             mEmail = email;
             mPassword = password;
+            mUsername = username;
         }
 
         @Override
@@ -322,6 +338,23 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             }
 
             // TODO: register the new account here.
+            GetDataService service = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
+            Call<Member> call = service.createUser(new Member(0,mEmail, mUsername, mPassword, 0));
+
+            Log.wtf("URL Called", call.request().url() + "");
+
+            call.enqueue(new Callback<Member>() {
+                @Override
+                public void onResponse(Call<Member> call, Response<Member> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<Member> call, Throwable t) {
+                    Log.wtf("parser", t.getLocalizedMessage());
+                    Toast.makeText(RegisterActivity.this, "Something went wrong...Error message: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
             return true;
         }
 
@@ -343,6 +376,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             mAuthTask = null;
             showProgress(false);
         }
+
     }
 }
 

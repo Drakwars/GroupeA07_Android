@@ -1,11 +1,14 @@
 package com.example.flori.groupea07_mobile;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
@@ -54,7 +57,20 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.menu_users :
                 intent = new Intent(this,MemberActivity.class);
-                startActivity(intent);
+
+                SharedPreferences loginData = getSharedPreferences("memberInfo", Context.MODE_PRIVATE);
+                int admin = loginData.getInt("admin",0);
+
+
+                if (admin == 0) {
+
+                    Log.d("connexion","Access denied");
+                    //Toast.makeText(this,"Access denied",Toast.LENGTH_LONG).show();
+                }else {
+
+                    startActivity(intent);
+
+                }
                 break;
         }
     }
