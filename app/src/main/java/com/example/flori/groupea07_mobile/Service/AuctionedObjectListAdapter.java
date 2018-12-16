@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.flori.groupea07_mobile.AuctionedObjectActivity;
 import com.example.flori.groupea07_mobile.Model.AuctionedObject;
 import com.example.flori.groupea07_mobile.R;
 
@@ -24,7 +23,7 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
     @Override
     public ObjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.layout_object_list, parent, false);
+        View view = layoutInflater.inflate(R.layout.single_row_object, parent, false);
         return new ObjectViewHolder(view);
     }
 

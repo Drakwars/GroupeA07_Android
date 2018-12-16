@@ -22,7 +22,7 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.Me
     @Override
     public MemberViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.single_row_view, parent, false);
+        View view = layoutInflater.inflate(R.layout.single_row_member, parent, false);
         return new MemberViewHolder(view);
     }
 

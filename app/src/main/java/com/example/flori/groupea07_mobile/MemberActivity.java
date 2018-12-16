@@ -27,9 +27,8 @@ public class MemberActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.object_listi_test);
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
+        setContentView(R.layout.card_layout_object_and_member);
+
 
 
         /** Create handle for the RetrofitInstance interface*/
@@ -71,7 +70,7 @@ public class MemberActivity extends AppCompatActivity {
     }
     /** Method to generate List of notice using RecyclerView with custom adapter*/
     private void generateMemberList(ArrayList<Member> memberArrayList  ) {
-        recyclerView = findViewById(R.id.recycler_view_notice_list);
+        recyclerView = findViewById(R.id.recycler_view_object_list);
         adapter = new MemberListAdapter(memberArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MemberActivity.this);
         recyclerView.setLayoutManager(layoutManager);

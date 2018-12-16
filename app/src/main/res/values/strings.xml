@@ -14,4 +14,25 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!--Buttons-->
+    <string name="intro_login">Login</string>
+    <string name="intro_reset">Reset</string>
+
+    <string name="txt_pwd">Password</string>
+
+    <string name="txt_objects">Objects</string>
+    <string name="txt_users">Manage users</string>
+    <string name="txt_register">Register</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_confirm_pwd">Confirm password</string>
+    <string name="txt_history">Sales history</string>
+    <string name="txt_return">Return</string>
+
+    <string name="title_activity_register">Sign in</string>
+
+    <string name="txt_welcome">Welcome to our app !</string>
+    <string name="reset">Reset</string>
 </resources>

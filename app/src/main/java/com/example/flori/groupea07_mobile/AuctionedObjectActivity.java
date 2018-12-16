@@ -27,9 +27,8 @@ public class AuctionedObjectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_object);
-        /*Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
+        setContentView(R.layout.card_layout_object_and_member);
+
 
 
         /** Create handle for the RetrofitInstance interface*/
@@ -57,6 +56,7 @@ public class AuctionedObjectActivity extends AppCompatActivity {
                 Toast.makeText(AuctionedObjectActivity.this, "Something went wrong...Error message: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
     /** Method to generate List of notice using RecyclerView with custom adapter*/
     private void generateAuctionedObjectList(ArrayList<AuctionedObject> auctionedObjectArrayList  ) {
