@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button _btn_login, _btn_reset;
     private EditText _et_username, _et_pwd;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,6 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         _btn_reset = (Button) findViewById(R.id.bt_log_reset);
         _btn_reset.setOnClickListener(this);
+
 
         _et_username = (EditText) findViewById(R.id.et_log_username);
         _et_pwd = (EditText) findViewById(R.id.et_log_password);
@@ -117,12 +119,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         SharedPreferences loginData = getSharedPreferences("memberInfo", Context.MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = loginData.edit();
-                        editor.clear();
-                        editor.commit();
+
 
                         editor.putString("userName", m.getUsername());
                         editor.putInt("admin", m.getUserAdmin());
                         editor.apply();
+
+                        setResult(LoginActivity.RESULT_OK);
 
                         finish();
 

@@ -29,8 +29,6 @@ public class MemberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_layout_object_and_member);
 
-
-
         /** Create handle for the RetrofitInstance interface*/
         GetDataService service = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
 
