@@ -15,4 +15,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AuctionedObjectActivity.class);
         startActivity(intent); //Et puis là on switch
     }
+
 }
