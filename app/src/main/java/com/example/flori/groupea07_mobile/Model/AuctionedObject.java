@@ -1,6 +1,6 @@
 package com.example.flori.groupea07_mobile.Model;
 
-public class Auctioned_object {
+public class AuctionedObject {
 
     private int idObject;
     private String nameObject;
@@ -9,7 +9,7 @@ public class Auctioned_object {
     private int idUser;
     private String catObject;
 
-    public Auctioned_object(int id, String nameO, String dObject, int price, int user, String cat){
+    public AuctionedObject(int id, String nameO, String dObject, int price, int user, String cat){
         this.idObject = id;
         this.nameObject = nameO;
         this.descriptionObject = dObject;
@@ -42,5 +42,16 @@ public class Auctioned_object {
 
     public void setCatObject(String cat){ catObject = cat;}
 
+    @Override
+    public String toString() {
+        return "AuctionedObject{" +
+                "idObject=" + idObject +
+                ", nameObject='" + nameObject + '\'' +
+                ", descriptionObject='" + descriptionObject + '\'' +
+                ", priceObject=" + priceObject +
+                ", idUser=" + idUser +
+                ", catObject='" + catObject + '\'' +
+                '}';
+    }
 }
 

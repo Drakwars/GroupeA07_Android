@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
-        Intent intent = new Intent(this, ObjectActivity.class);
+        Intent intent = new Intent(this, AuctionedObjectActivity.class);
         startActivity(intent); //Et puis là on switch
     }
 }

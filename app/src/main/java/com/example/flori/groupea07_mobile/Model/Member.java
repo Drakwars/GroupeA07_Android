@@ -6,9 +6,9 @@ public class Member {
     private String emailUser;
     private String username;
     private String userPwd;
-    private boolean userAdmin;
+    private int userAdmin;
 
-    public Member(int id,String email, String user, String pwd, boolean admin){
+    public Member(int id,String email, String user, String pwd, int admin){
             this.idUser = id;
             this.emailUser = email;
             this.username = user;
@@ -36,8 +36,18 @@ public class Member {
 
     public void setUserPwd(String pwd){ this.userPwd = pwd;}
 
-    public boolean getUserAdmin(){ return userAdmin;}
+    public int getUserAdmin(){ return userAdmin;}
 
-    public void setUserAdmin(boolean admin){ this.userAdmin = admin;}
+    public void setUserAdmin(int admin){ this.userAdmin = admin;}
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "idUser=" + idUser +
+                ", emailUser='" + emailUser + '\'' +
+                ", username='" + username + '\'' +
+                ", userPwd='" + userPwd + '\'' +
+                ", userAdmin=" + userAdmin +
+                '}';
+    }
 }
