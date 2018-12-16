@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         _et_username = (EditText) findViewById(R.id.et_log_username);
         _et_pwd = (EditText) findViewById(R.id.et_log_password);
-
+//test
 
         // Toolbar
         Toolbar toolBar = (Toolbar) findViewById(R.id.login_tool_bar);
