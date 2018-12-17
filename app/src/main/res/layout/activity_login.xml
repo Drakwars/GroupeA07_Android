@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@drawable/background">
 
     <!-- Toolbar -->
     <android.support.v7.widget.Toolbar
@@ -19,27 +19,31 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_username"/>
+        android:text="@string/txt_username"
+        android:layout_margin="10px"/>
 
 
     <EditText
         android:id="@+id/et_log_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/txt_username"/>
+        android:hint="@string/txt_username"
+        android:layout_margin="10px"/>
 
     <!-- Login -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_login"/>
+        android:text="@string/txt_login"
+        android:layout_margin="10px"/>
 
     <EditText
         android:id="@+id/et_log_password"
         android:layout_width="match_parent"
         android:inputType="textPassword"
         android:hint="@string/txt_pwd"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"/>
 
     <!-- Buttons -->
     <LinearLayout

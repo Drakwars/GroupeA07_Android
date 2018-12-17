@@ -45,7 +45,7 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
         holder.txtIdObject.setText(dataList.get(position).getIdObject()+"");
         holder.txtNameObject.setText(dataList.get(position).getNameObject());
         holder.txtPriceObject.setText(dataList.get(position).getPriceObject()+"");
-        holder.txtCatObject.setText(dataList.get(position).getCatObject());
+        holder.txtCatObject.setText(dataList.get(position).getCatObject()+"");
     }
 
     @Override
@@ -60,7 +60,6 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
         ObjectViewHolder(final View itemView) {
             super(itemView);
             txtIdObject =  itemView.findViewById(R.id.txt_id_object);
-            txtIdObject.setVisibility(View.GONE);
             txtNameObject =  itemView.findViewById(R.id.txt_name_object);
             txtPriceObject =  itemView.findViewById(R.id.txt_price_object);
             txtCatObject = itemView.findViewById(R.id.txt_cat_object);

@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.example.flori.groupea07_mobile.Model.Member;
 import com.example.flori.groupea07_mobile.Model.RetrofitInstance;
+import com.example.flori.groupea07_mobile.Model.SellerUser;
 import com.example.flori.groupea07_mobile.Service.GetDataService;
 
 import java.util.ArrayList;
@@ -156,50 +157,69 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
 
-        // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
-        mUsername.setError(null);
-        // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
-        String username = mUsername.getText().toString();
-        boolean cancel = false;
-        View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
+        GetDataService service = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
+        Call<List<Member>> call = service.groupList();
+        call.enqueue(new Callback<List<Member>>() {
+            @Override
+            public void onResponse(Call<List<Member>> call, Response<List<Member>> response) {
+                if (mAuthTask != null) {
+                    return;
+                }
 
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
-            cancel = true;
-        }
+                // Reset errors.
+                mEmailView.setError(null);
+                mPasswordView.setError(null);
+                mUsername.setError(null);
+                // Store values at the time of the login attempt.
+                String email = mEmailView.getText().toString();
+                String password = mPasswordView.getText().toString();
+                String username = mUsername.getText().toString();
+                boolean cancel = false;
+                View focusView = null;
+                for(Member m : response.body()){
+                    if(m.getUsername().equals(mUsername.getText().toString())){
+                        mUsername.setError("Username already existing");
+                        focusView = mUsername;
+                        cancel = true;
+                    }
+                }
+                if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+                    mPasswordView.setError(getString(R.string.error_invalid_password));
+                    focusView = mPasswordView;
+                    cancel = true;
+                }
 
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error
-            focusView.requestFocus();
-        } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password, username);
-            mAuthTask.execute((Void) null);
-        }
+                // Check for a valid email address.
+                if (TextUtils.isEmpty(email)) {
+                    mEmailView.setError(getString(R.string.error_field_required));
+                    focusView = mEmailView;
+                    cancel = true;
+                } else if (!isEmailValid(email)) {
+                    mEmailView.setError(getString(R.string.error_invalid_email));
+                    focusView = mEmailView;
+                    cancel = true;
+                }
+
+                if (cancel) {
+                    // There was an error; don't attempt login and focus the first
+                    // form field with an error
+                    focusView.requestFocus();
+                } else {
+                    // Show a progress spinner, and kick off a background task to
+                    // perform the user login attempt.
+                    showProgress(true);
+                    mAuthTask = new UserLoginTask(email, password, username);
+                    mAuthTask.execute((Void) null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Member>> call, Throwable t) {
+
+            }
+        });
     }
 
     private boolean isEmailValid(String email) {
@@ -377,6 +397,37 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             showProgress(false);
         }
 
+    }
+
+    private class DupCheckCallBack implements Callback<List<Member>> {
+        @Override
+        public void onResponse(Call<List<Member>> call, Response<List<Member>> response) {
+            for(Member m : response.body()){
+                if(m.getUsername().equals(mUsername.getText().toString())){
+
+                    mUsername.setError("Username already existing");
+                    setCancel(true);
+                    Log.wtf("TRUE CLASS?", cancel+"");
+                }
+            }
+        }
+
+        @Override
+        public void onFailure(Call<List<Member>> call, Throwable t) {
+
+        }
+        private boolean cancel;
+        DupCheckCallBack(boolean cancel){
+            this.cancel = cancel;
+        }
+
+        public boolean getCancel(){
+            return cancel;
+        }
+
+        protected void setCancel(boolean cancel){
+            this.cancel = cancel;
+        }
     }
 }
 
