@@ -110,8 +110,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (admin == 0) {
 
-                    Log.d("connexion","Access denied");
-                    //Toast.makeText(this,"Access denied",Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(this,"Access denied",Toast.LENGTH_LONG).show();
                 }else {
 
                     startActivity(intent);
