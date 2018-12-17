@@ -3,6 +3,13 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+
+    <!-- Toolbar -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/menu_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/menu_login"
         android:layout_width="fill_parent"
@@ -22,6 +29,12 @@
         android:text="@string/txt_register" />
 
     <Button
+        android:id="@+id/menu_addObject"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Object" />
+
+    <Button
         android:id="@+id/menu_objects"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -34,7 +47,7 @@
         android:text="@string/txt_users" />
 
     <Button
-        android:id="@+id/menu_history"
+        android:id="@+id/menu_sold_objects"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/txt_history" />

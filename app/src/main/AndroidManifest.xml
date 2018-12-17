@@ -37,6 +37,8 @@
 
         <activity android:name=".AuctionedObjectActivity" android:label="Selling items"></activity>
         <activity android:name=".MemberActivity" android:label="test"></activity>
+        <activity android:name=".SoldObjActivity" android:label="test"></activity>
+        <activity android:name=".AddObjectActivity" android:label="Add Object"></activity>
     </application>
 
     </manifest>

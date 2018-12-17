@@ -26,7 +26,7 @@ public class SoldObject {
 
     public void setNameObject(String name){ nameObject = name;}
 
-    public String getCatObject(){return getCatObject();}
+    public String getCatObject(){return catObject;}
 
     public void setCatObject(String cat){ catObject = cat;}
 }

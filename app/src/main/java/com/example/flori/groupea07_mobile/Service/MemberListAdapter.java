@@ -58,6 +58,7 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.Me
         MemberViewHolder(final View itemView) {
             super(itemView);
             txtIdMember =  itemView.findViewById(R.id.txt_id_member);
+            txtIdMember.setVisibility(View.GONE);
             txtNameMember =  itemView.findViewById(R.id.txt_name_member);
             txtEmailMember =  itemView.findViewById(R.id.txt_mail_member);
 
