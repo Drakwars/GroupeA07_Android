@@ -1,17 +1,12 @@
 package com.example.flori.groupea07_mobile.Service;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.flori.groupea07_mobile.LoginActivity;
-import com.example.flori.groupea07_mobile.MemberActivity;
 import com.example.flori.groupea07_mobile.Model.Member;
 import com.example.flori.groupea07_mobile.Model.RetrofitInstance;
 import com.example.flori.groupea07_mobile.R;
@@ -75,6 +70,7 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.Me
                             for(Member m : response.body()){
                                 if(Integer.toString(m.getIdUser()).equals(txtIdMember.getText().toString())){
                                     setPositionMember(i);
+                                    break;
                                 }
                                 i++;
                             }
@@ -82,9 +78,10 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberListAdapter.Me
                         @Override
                         public void onFailure(Call<List<Member>> call, Throwable t) {}
                     });
+
+
                     GetDataService serviceDelete = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
                     Call<ResponseBody> callDelete = serviceDelete.deleteMember(txtIdMember.getText().toString());
-
                     callDelete.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call1, Response<ResponseBody> response) {

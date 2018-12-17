@@ -1,20 +1,16 @@
 package com.example.flori.groupea07_mobile.Service;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.flori.groupea07_mobile.Model.AuctionedObject;
-import com.example.flori.groupea07_mobile.Model.Member;
 import com.example.flori.groupea07_mobile.Model.RetrofitInstance;
 import com.example.flori.groupea07_mobile.Model.SoldObject;
 import com.example.flori.groupea07_mobile.R;
-import com.example.flori.groupea07_mobile.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,11 +37,11 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
 
     @Override
     public void onBindViewHolder(ObjectViewHolder holder, int position) {
-        Log.wtf("parser", dataList.toString());
         holder.txtIdObject.setText(dataList.get(position).getIdObject()+"");
         holder.txtNameObject.setText(dataList.get(position).getNameObject());
-        holder.txtPriceObject.setText(dataList.get(position).getPriceObject()+"");
-        holder.txtCatObject.setText(dataList.get(position).getCatObject()+"");
+        holder.txtPriceObject.setText(dataList.get(position).getPriceObject()+" €");
+        holder.txtDescObject.setText("Description object : " + dataList.get(position).getDescriptionObject());
+        holder.txtCatObject.setText("Category : " + dataList.get(position).getCatObject()+"");
     }
 
     @Override
@@ -55,23 +51,26 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
 
     class ObjectViewHolder extends RecyclerView.ViewHolder {
         int positionMember, i;
-        TextView txtIdObject, txtNameObject, txtPriceObject, txtCatObject;
+        TextView txtIdObject, txtNameObject, txtPriceObject, txtCatObject, txtDescObject;
         Button btn_Buy;
+
         ObjectViewHolder(final View itemView) {
             super(itemView);
             txtIdObject =  itemView.findViewById(R.id.txt_id_object);
+            txtIdObject.setVisibility(View.GONE);
             txtNameObject =  itemView.findViewById(R.id.txt_name_object);
             txtPriceObject =  itemView.findViewById(R.id.txt_price_object);
+            txtDescObject = itemView.findViewById(R.id.txt_desc_object);
             txtCatObject = itemView.findViewById(R.id.txt_cat_object);
 
             btn_Buy = (Button) itemView.findViewById(R.id.bt_row_buy);
             btn_Buy.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
+
                     GetDataService serviceSold = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
                     Call<SoldObject> callSold = serviceSold.createSoldObject(new SoldObject(Integer.parseInt(txtIdObject.getText().toString()), Integer.parseInt(txtPriceObject.getText().toString()), txtNameObject.getText().toString(), txtCatObject.getText().toString()));
 
-                    Log.wtf("URL Called", callSold.request().url() + "");
 
                     callSold.enqueue(new Callback<SoldObject>() {
                         @Override
@@ -89,6 +88,7 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
                             for(AuctionedObject m : response.body()){
                                 if(Integer.toString(m.getIdObject()).equals(txtIdObject.getText().toString())){
                                     setPositionMember(i);
+                                    break;
                                 }
                                 i++;
                             }

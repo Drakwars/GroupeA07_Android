@@ -17,7 +17,7 @@
         android:id="@+id/register_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+    
         />
 
     <!-- Login progress bar-->

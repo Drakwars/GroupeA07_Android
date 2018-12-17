@@ -43,7 +43,8 @@
     <string name="txt_price_object">Price object</string>
     <string name="txt_description_object">Description object</string>
     <string name="txt_cat_object">Category object</string>
-
-    <string name="txt_welcome">Welcome to our app !</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_welcome">Saler site !</string>
+    <string name="txt_go_to_website">Go to website</string>
     <string name="reset">Reset</string>
 </resources>

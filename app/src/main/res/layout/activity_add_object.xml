@@ -14,23 +14,27 @@
 
 
         <TextView
+            android:layout_margin="10px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/txt_name_object" />
 
 
         <EditText
+            android:layout_margin="10px"
             android:id="@+id/et_log_nameobject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/txt_name_object" />
 
         <TextView
+            android:layout_margin="10px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_price_object" />
 
         <EditText
+            android:layout_margin="10px"
             android:id="@+id/et_log_priceobject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,22 +42,26 @@
 
 
         <TextView
+            android:layout_margin="10px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_description_object" />
 
         <EditText
+            android:layout_margin="10px"
             android:id="@+id/et_log_descriptionobject"
             android:layout_width="match_parent"
             android:hint="@string/txt_description_object"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_margin="10px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_cat_object" />
 
         <EditText
+            android:layout_margin="10px"
             android:id="@+id/et_log_catobject"
             android:layout_width="match_parent"
             android:hint="@string/txt_cat_object"

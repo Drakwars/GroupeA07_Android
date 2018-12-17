@@ -30,11 +30,10 @@
         android:hint="@string/txt_username"
         android:layout_margin="10px"/>
 
-    <!-- Login -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txt_login"
+        android:text="@string/txt_password"
         android:layout_margin="10px"/>
 
     <EditText

@@ -29,17 +29,9 @@ public class AuctionedObjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_layout_object_and_member);
 
-
-
-        /** Create handle for the RetrofitInstance interface*/
         GetDataService service = RetrofitInstance.getRetrofitInstance().create(GetDataService.class);
 
-        /** Call the method with parameter in the interface to get the notice data*/
         Call<List<AuctionedObject>> call = service.groupObjectList();
-
-
-        /**Log the URL called*/
-        Log.wtf("URL Called", call.request().url() + "");
 
         call.enqueue(new Callback<List<AuctionedObject>>() {
             @Override
@@ -49,7 +41,6 @@ public class AuctionedObjectActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<AuctionedObject>> call, Throwable t) {
-                Log.wtf("parser", t.getLocalizedMessage());
                 Toast.makeText(AuctionedObjectActivity.this, "Something went wrong...Error message: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
