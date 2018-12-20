@@ -39,9 +39,10 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
     public void onBindViewHolder(ObjectViewHolder holder, int position) {
         holder.txtIdObject.setText(dataList.get(position).getIdObject()+"");
         holder.txtNameObject.setText(dataList.get(position).getNameObject());
-        holder.txtPriceObject.setText(dataList.get(position).getPriceObject()+" €");
-        holder.txtDescObject.setText("Description object : " + dataList.get(position).getDescriptionObject());
-        holder.txtCatObject.setText("Category : " + dataList.get(position).getCatObject()+"");
+        holder.txtPriceObject.setText(dataList.get(position).getPriceObject()+"");
+
+        holder.txtDescObject.setText(dataList.get(position).getDescriptionObject());
+        holder.txtCatObject.setText(dataList.get(position).getCatObject()+"");
     }
 
     @Override
@@ -52,6 +53,7 @@ public class AuctionedObjectListAdapter extends RecyclerView.Adapter<AuctionedOb
     class ObjectViewHolder extends RecyclerView.ViewHolder {
         int positionMember, i;
         TextView txtIdObject, txtNameObject, txtPriceObject, txtCatObject, txtDescObject;
+        TextView int_id, int_name, int_price, int_cat, int_desc;
         Button btn_Buy;
 
         ObjectViewHolder(final View itemView) {

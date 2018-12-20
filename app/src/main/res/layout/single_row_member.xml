@@ -22,14 +22,12 @@
             android:textStyle="bold"
             android:padding="3dp"/>
 
-        <!-- Text Notice Description -->
         <TextView
             android:id="@+id/txt_name_member"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="3dp" />
 
-        <!-- Text Notice FilePath -->
         <TextView
             android:id="@+id/txt_mail_member"
             android:layout_width="match_parent"
@@ -48,18 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_delete"/>
-
-            <Button
-                android:id="@+id/bt_row_member_promote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_promote"/>
-
-            <Button
-                android:id="@+id/bt_row_member_demote"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_demote"/>
         </LinearLayout>
 
     </LinearLayout>

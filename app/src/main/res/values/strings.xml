@@ -47,4 +47,8 @@
     <string name="txt_welcome">Saler site !</string>
     <string name="txt_go_to_website">Go to website</string>
     <string name="reset">Reset</string>
+
+    <string name="txt_euro"> €</string>
+    <string name="txt_title_desc">Description : </string>
+    <string name="txt_title_cat">Category : </string>
 </resources>

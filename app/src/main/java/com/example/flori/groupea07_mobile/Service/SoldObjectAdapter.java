@@ -30,8 +30,8 @@ public class SoldObjectAdapter extends RecyclerView.Adapter<SoldObjectAdapter.Ob
     public void onBindViewHolder(ObjectViewHolder holder, int position) {
         holder.txtIdObject.setText(dataList.get(position).getIdObject()+"");
         holder.txtNameObject.setText(dataList.get(position).getNameObject());
-        holder.txtPriceObject.setText(dataList.get(position).getFinalPrice()+" €");
-        holder.txtCatObject.setText("Category object : " + dataList.get(position).getCatObject());
+        holder.txtPriceObject.setText(dataList.get(position).getFinalPrice()+"");
+        holder.txtCatObject.setText(dataList.get(position).getCatObject());
     }
 
     @Override

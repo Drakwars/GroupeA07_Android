@@ -17,15 +17,9 @@ public class RetrofitInstance {
     public static Retrofit getRetrofitInstance() {
 
         OkHttpClient client=new OkHttpClient();
-        try {
+
             client = new OkHttpClient.Builder()
-                    .sslSocketFactory(new TLSSocketFactory())
                     .build();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
         if (retrofit == null) {
             retrofit = new retrofit2.Retrofit.Builder()
